@@ -8,6 +8,9 @@ public class Main {
         String musicNumber = scanner.nextLine().trim();
 
         MusicFinder musicFinder = new MusicFinder("/Users/yurimfontes/Documents/musicas/musicas.txt");
+        VideoFinder videoFinder = new VideoFinder("/Users/yurimfontes/Documents/musicas");
+
+        String videoPath = videoFinder.findVideoByNumber(musicNumber);
         Music music = musicFinder.findMusicByNumber(musicNumber);
 
         if (music != null) {
@@ -17,6 +20,13 @@ public class Main {
             System.out.println("Caminho do arquivo: " + music.takeURL());
         } else {
             System.out.println("Música não encontrada!");
+        }
+
+        if (videoPath != null){
+            System.out.println("Video encontrado!");
+            System.out.println("Caminho do video: " + videoPath);
+        }else{
+            System.out.println("Video não encontrado!");
         }
     }
 }

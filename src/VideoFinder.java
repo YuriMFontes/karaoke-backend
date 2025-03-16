@@ -1,5 +1,7 @@
+import java.awt.*;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
 
 public class VideoFinder {
     private String directoryPath;
@@ -23,5 +25,26 @@ public class VideoFinder {
             return matchFiles[0].getAbsolutePath();
         }
         return null;
+    };
+
+    public void playVideo(String videoPath){
+        File videoFile = new File(videoPath);
+
+        if (!videoFile.exists()){
+            System.out.println("Video não encontrado!" + videoPath);
+            return;
+        }
+
+        if (Desktop.isDesktopSupported()){
+            try{
+                Desktop.getDesktop().open(videoFile);
+                System.out.println("Reproduzindo video" + videoPath);
+            } catch (IOException e){
+                System.out.println("Erro ao tentar abrir o video");
+                e.printStackTrace();
+            }
+        }else {
+            System.out.println("Desktop não suportado para abrir arquivos.");
+        }
     };
 }

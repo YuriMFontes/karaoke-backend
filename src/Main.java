@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Música encontrada!");
             System.out.println("Nome: " + music.getName());
             System.out.println("Artista: " + music.getArtist());
-            System.out.println("Caminho do arquivo: " + music.takeURL());
+            System.out.println("Caminho do arquivo: " + music.getUrl());
         } else {
             System.out.println("Música não encontrada!");
         }
@@ -28,5 +28,7 @@ public class Main {
         }else{
             System.out.println("Video não encontrado!");
         }
+
+        videoFinder.playVideo(videoPath);
     }
 }

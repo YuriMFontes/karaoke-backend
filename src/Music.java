@@ -2,13 +2,13 @@ public class Music {
     private String name;
     private String artist;
     private String number;
-    private String pathFile;
+    private String url;
 
-    public Music(String name, String artist, String number, String pathFile) {
-        this.number = number;
+    public Music(String name, String artist, String number, String url) {
         this.name = name;
         this.artist = artist;
-        this.pathFile = pathFile;
+        this.number = number;
+        this.url = url;
     }
 
     public String getName() {
@@ -23,11 +23,8 @@ public class Music {
         return number;
     }
 
-    public String getPathFile() {
-        return pathFile;
+    public String getUrl() {
+        return this.url + getNumber() + ".mp4";
     }
 
-    public String takeURL(){
-        return this.pathFile + getNumber() + ".mp4";
-    };
 }

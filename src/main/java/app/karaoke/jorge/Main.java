@@ -3,10 +3,12 @@ package app.karaoke.jorge;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import static app.karaoke.jorge.Musica.exibirNomeCantor;
 import static app.karaoke.jorge.Musica.verificarNumero;
 
 public class Main {
     public static void main(String[] args) {
+
         //ArrayList para instanciar as musicas
         ArrayList<Musica> listaMusica = new ArrayList<>();
         listaMusica.add(new Musica("0001","Five Song", "Yeshua"));
@@ -30,5 +32,6 @@ public class Main {
         }
 
         scanner.close();
+        exibirNomeCantor(numeroDigitado, listaMusica);
     }
 }

@@ -33,15 +33,6 @@ public class Musica {
         return "Música #" + numero + ": " + nome + " - " + cantor;
     }
 
-    //Metodo verificar o numero digitado é igual ao numero da musica
-    static boolean verificarNumero(String numeroDigitado, ArrayList<Musica> listaMusica){
-        for(Musica musica : listaMusica){
-            if (musica.getNumero().equals(numeroDigitado)){
-                return true; //Musica encontrada
-            }
-        }
-        return false; //Musica não encontrada
-    }
 
     //Metodo para exibir o nome e cantor da musica
     static void exibirNomeCantor(String numeroDigitado, ArrayList<Musica> listaMusica){

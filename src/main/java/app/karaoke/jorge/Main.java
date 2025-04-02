@@ -4,34 +4,44 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import static app.karaoke.jorge.Musica.exibirNomeCantor;
-import static app.karaoke.jorge.Musica.verificarNumero;
+import static app.karaoke.jorge.MusicaJSONManager.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        //ArrayList para instanciar as musicas
-        ArrayList<Musica> listaMusica = new ArrayList<>();
-        listaMusica.add(new Musica("0001","Five Song", "Yeshua"));
-        listaMusica.add(new Musica("0002", "Domingo de manha", "Matheus e Kaua"));
-
-        //Input no terminal
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o número da música: ");
-        String numeroDigitado = scanner.nextLine();
 
-        //Try catch para aplicar exception
-        try {;
-            if(verificarNumero(numeroDigitado, listaMusica)){
-                System.out.println("Musica tocando...");
-            }else {
-                throw new Exception("Musica digitada não existe!");
+        //Menu para escolhas
+        System.out.println("Escolhe um opcão: \n1-Procurar música \n2-Adicionar música \n3-Sair");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();
+
+        if (opcao == 1) {
+            //Input no terminal
+            System.out.println("Digite o número da música: ");
+            String numeroDigitado = scanner.nextLine();
+
+            //Try catch para aplicar exception
+            try {
+                ;
+                if (verificarNumero(numeroDigitado)) {
+                    System.out.println("Musica tocando...");
+                } else {
+                    throw new Exception("Musica digitada não existe!");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e.getLocalizedMessage());
             }
-
-        }catch (Exception e){
-            System.out.println(e.getLocalizedMessage());
         }
-
-        scanner.close();
-        exibirNomeCantor(numeroDigitado, listaMusica);
+        if (opcao == 2) {
+            System.out.println("Qual número da musica? ");
+            String numero = scanner.nextLine();
+            System.out.println("Qual nome da música que deseja adicionar? ");
+            String nome = scanner.nextLine();
+            System.out.println("Qual cantor canta? ");
+            String cantor = scanner.nextLine();
+            adicionarMusica(new Musica(numero, nome, cantor));
+        }
     }
 }
+

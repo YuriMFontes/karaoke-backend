@@ -8,5 +8,20 @@
     "numero": "0001",
     "nome": "Song Five",
     "cantor": "Yeshua"
+  },
+  {
+    "numero": "0002",
+    "nome": "MAtheus e Kaua",
+    "cantor": "Domingo de manha"
+  },
+  {
+    "numero": "0004",
+    "nome": "Victor e leo",
+    "cantor": "Borboletas"
+  },
+  {
+    "numero": "0005",
+    "nome": "Borbulas de amor",
+    "cantor": "Desconhecido"
   }
 ]

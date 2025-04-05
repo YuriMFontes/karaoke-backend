@@ -15,9 +15,14 @@ public class VideoView {
         return layout;
     }
 
+
+
     public static Label criarMensagemErro() {
         Label erro = new Label("❌ Vídeo não encontrado para essa música!");
         erro.setStyle("-fx-text-fill: red; -fx-font-size: 36px;");
         return erro;
     }
+
+
+
 }

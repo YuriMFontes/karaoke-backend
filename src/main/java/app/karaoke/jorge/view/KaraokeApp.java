@@ -26,7 +26,7 @@ public class KaraokeApp extends Application {
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
-                new BackgroundSize(1.0, 1.0, true, true, false, false) // ocupa toda a tela
+                new BackgroundSize(1.0, 1.0, true, true, false, false)
         );
         root.setBackground(new Background(backgroundImage));
 
@@ -40,7 +40,6 @@ public class KaraokeApp extends Application {
         primaryStage.setTitle("Karaokê Maclim");
         primaryStage.show();
     }
-
 
     private VBox criarTelaInicial(StackPane root) {
         TextField inputField = new TextField();
@@ -64,7 +63,20 @@ public class KaraokeApp extends Application {
 
         inputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER && musicaSelecionada != null) {
-                root.getChildren().setAll(VideoView.criarLayout(VideoController.carregarVideo(musicaSelecionada)));
+                var videoNode = VideoController.carregarVideo(musicaSelecionada);
+                var layoutVideo = VideoView.criarLayout(videoNode);
+
+                Scene scene = root.getScene();
+
+                scene.setOnKeyPressed(e -> {
+                    if (e.getCode() == KeyCode.BACK_SPACE) {
+                        VBox telaInicial = criarTelaInicial(root);
+                        root.getChildren().setAll(telaInicial);
+                        scene.setOnKeyPressed(null); // remove o listener para evitar duplicação
+                    }
+                });
+
+                root.getChildren().setAll(layoutVideo);
             }
         });
 

@@ -24,7 +24,6 @@ public class VideoController {
             mediaView.setPreserveRatio(true);
             mediaPlayer.setAutoPlay(true);
 
-            // A View vai ajustar o tamanho ao layout
             return mediaView;
         } else {
             return VideoView.criarMensagemErro();

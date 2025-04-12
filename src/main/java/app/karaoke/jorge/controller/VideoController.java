@@ -12,21 +12,34 @@ import java.io.File;
 
 public class VideoController {
 
+    private static MediaPlayer mediaPlayerAtual;
+
     public static Node carregarVideo(Musica musica) {
+        // Para o vídeo anterior se estiver tocando
+        pararVideoAtual();
+
         Video video = new Video(musica);
         File arquivo = new File(video.getCaminhoCompleto());
 
         if (arquivo.exists()) {
             Media media = new Media(arquivo.toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(media);
-            MediaView mediaView = new MediaView(mediaPlayer);
+            mediaPlayerAtual = new MediaPlayer(media);
+            MediaView mediaView = new MediaView(mediaPlayerAtual);
 
             mediaView.setPreserveRatio(true);
-            mediaPlayer.setAutoPlay(true);
+            mediaPlayerAtual.setAutoPlay(true);
 
             return mediaView;
         } else {
             return VideoView.criarMensagemErro();
+        }
+    }
+
+    public static void pararVideoAtual() {
+        if (mediaPlayerAtual != null) {
+            mediaPlayerAtual.stop();
+            mediaPlayerAtual.dispose();
+            mediaPlayerAtual = null;
         }
     }
 }

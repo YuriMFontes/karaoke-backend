@@ -70,6 +70,7 @@ public class KaraokeApp extends Application {
 
                 scene.setOnKeyPressed(e -> {
                     if (e.getCode() == KeyCode.BACK_SPACE) {
+                        VideoController.pararVideoAtual();
                         VBox telaInicial = criarTelaInicial(root);
                         root.getChildren().setAll(telaInicial);
                         scene.setOnKeyPressed(null); // remove o listener para evitar duplicação

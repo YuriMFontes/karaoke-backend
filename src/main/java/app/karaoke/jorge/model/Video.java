@@ -1,7 +1,7 @@
 package app.karaoke.jorge.model;
 
 public class Video {
-    private static final String FILE_PATH = "/Users/yurimfontes/Documents/musicas/";
+    private static final String FILE_PATH = "F:/Musicas/";
     private Musica musica;
 
     public Video(Musica musica) {

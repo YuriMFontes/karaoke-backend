@@ -50,7 +50,8 @@
             return false;
         }
 
-        public static Musica buscarMusicaPorNumero(String numeroDigitado) {
+        public static Musica
+        buscarMusicaPorNumero(String numeroDigitado) {
             List<Musica> listaMusica = carregarMusicas();
             for (Musica musica : listaMusica) {
                 if (musica.getNumero().equals(numeroDigitado)) {

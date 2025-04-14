@@ -14,8 +14,7 @@ public class VideoController {
 
     private static MediaPlayer mediaPlayerAtual;
 
-    public static Node carregarVideo(Musica musica) {
-        // Para o vídeo anterior se estiver tocando
+    public static Node carregarVideo(Musica musica, Runnable onVideoEnd) {
         pararVideoAtual();
 
         Video video = new Video(musica);
@@ -28,6 +27,17 @@ public class VideoController {
 
             mediaView.setPreserveRatio(true);
             mediaPlayerAtual.setAutoPlay(true);
+
+            // Ao terminar o vídeo, executa o retorno
+            mediaPlayerAtual.setOnEndOfMedia(() -> {
+                mediaPlayerAtual.stop();
+                mediaPlayerAtual.dispose();
+                mediaPlayerAtual = null;
+
+                if (onVideoEnd != null) {
+                    onVideoEnd.run();
+                }
+            });
 
             return mediaView;
         } else {

@@ -63,7 +63,12 @@ public class KaraokeApp extends Application {
 
         inputField.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER && musicaSelecionada != null) {
-                var videoNode = VideoController.carregarVideo(musicaSelecionada);
+                Runnable voltarParaTelaInicial = () -> {
+                    VBox telaInicial = criarTelaInicial(root);
+                    javafx.application.Platform.runLater(() -> root.getChildren().setAll(telaInicial));
+                };
+
+                var videoNode = VideoController.carregarVideo(musicaSelecionada, voltarParaTelaInicial);
                 var layoutVideo = VideoView.criarLayout(videoNode);
 
                 Scene scene = root.getScene();

@@ -25,7 +25,11 @@ public class VideoController {
             mediaPlayerAtual = new MediaPlayer(media);
             MediaView mediaView = new MediaView(mediaPlayerAtual);
 
-            mediaView.setPreserveRatio(true);
+            // ✅ Define tamanho fixo da área do vídeo
+            mediaView.setFitWidth(1024);
+            mediaView.setFitHeight(768);
+            mediaView.setPreserveRatio(true); // Mantém a proporção do vídeo
+
             mediaPlayerAtual.setAutoPlay(true);
 
             // Ao terminar o vídeo, executa o retorno
